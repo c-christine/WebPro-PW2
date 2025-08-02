@@ -1,0 +1,296 @@
+/* Base body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #ACB6E5);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2d3436;
+  user-select: none;
+  /* Prevent horizontal scroll on small screens */
+  overflow-x: hidden;
+}
+
+/* Header styling */
+header {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+/* Controls container */
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+}
+
+/* Individual selectors */
+.selector {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px rgba(99, 110, 114, 0.3);
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.selector:hover {
+  transform: translateY(-3px);
+}
+
+/* Label inside selectors */
+.selector label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+/* Form inputs and selects */
+select,
+input[type="checkbox"] {
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #b2bec3;
+  padding: 0.3rem 0.5rem;
+  user-select: none;
+  transition: border-color 0.2s ease;
+}
+
+select:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 5px rgba(108, 92, 231, 0.6);
+}
+
+/* Game info container */
+#game-info {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  user-select: none;
+}
+
+/* Items inside game info */
+#game-info > div,
+#game-info > button {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  cursor: default;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Buttons in game info */
+#game-info button {
+  background: #00b894;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Button hover states */
+#game-info button:hover {
+  background: #098f72;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Container for the puzzle */
+#game-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  user-select: none;
+  /* Responsive */
+  box-sizing: border-box;
+}
+
+/* Puzzle board styling */
+#puzzle-board {
+  display: grid;
+  gap: 5px;
+  border: 3px solid #2d3436;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
+  user-select: none;
+}
+
+/* Different grid sizes for the puzzle */
+.puzzle-3x3 {
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+
+.puzzle-4x4 {
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+}
+
+.puzzle-5x5 {
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: repeat(5, 100px);
+}
+
+/* Individual tile styling */
+.tile {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2d3436;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    background-color 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover effect for tiles */
+.tile:hover {
+  color: #006600;
+  border-color: #00b894;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 184, 148, 0.7);
+  z-index: 10;
+}
+
+/* Active (click) effect */
+.tile:active {
+  transform: scale(0.95);
+}
+
+/* Empty tile styling */
+.empty {
+  background: transparent !important;
+  border: 2px dashed #b2bec3 !important;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+/* Highlight movable tiles */
+.movablepiece {
+  border-color: #00b894 !important;
+  color: #006600 !important;
+  background-color: rgba(0, 184, 148, 0.1) !important;
+  animation: pulse 1.5s infinite ease-in-out;
+  cursor: pointer;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Preferences form */
+#preferences-form {
+  margin: 1rem auto 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Buttons inside preferences form */
+#preferences-form button {
+  background: #6c5ce7;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(108, 92, 231, 0.4);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+#preferences-form button:hover {
+  background: #341f97;
+}
+
+/* Hide background music audio element */
+audio#bg-music {
+  display: none;
+}
+
+/* Logout button styling */
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.6rem 1.5rem;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
+  transition: 
+    background-color 0.3s ease, 
+    transform 0.2s ease, 
+    box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logout-button:hover {
+  background: #e84118;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 71, 87, 0.4);
+}
+
+.logout-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 71, 87, 0.3);
+}
+
+.logout-button::before {
+  font-size: 1.2em;
+}
